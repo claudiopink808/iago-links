@@ -1,0 +1,86 @@
+[
+ {
+  "canal": "CH01",
+  "slug": "chamaoiago",
+  "nome": "ChamaOiago",
+  "ig": "chamaoiago"
+ },
+ {
+  "canal": "CH02",
+  "slug": "julia",
+  "nome": "Recomenda Julia",
+  "ig": "recomendajulia"
+ },
+ {
+  "canal": "CH03",
+  "slug": "isabela",
+  "nome": "Chama a Isabela",
+  "ig": "chamaaisabela"
+ },
+ {
+  "canal": "CH04",
+  "slug": "luiza",
+  "nome": "Chama a Luiza",
+  "ig": "chamaaluiza"
+ },
+ {
+  "canal": "CH05",
+  "slug": "madu",
+  "nome": "Recomenda Madu",
+  "ig": "recomendamadu"
+ },
+ {
+  "canal": "CH06",
+  "slug": "carol",
+  "nome": "Carol Concorda",
+  "ig": "carolconcorda"
+ },
+ {
+  "canal": "CH07",
+  "slug": "fernanda",
+  "nome": "Fernanda Com Assunto",
+  "ig": "fernandacomassunto"
+ },
+ {
+  "canal": "CH08",
+  "slug": "lucca",
+  "nome": "Lucca Comenta",
+  "ig": "luccacomenta"
+ },
+ {
+  "canal": "CH09",
+  "slug": "cadu",
+  "nome": "Avisa Cadu",
+  "ig": "avisacadu"
+ },
+ {
+  "canal": "CH10",
+  "slug": "joao",
+  "nome": "João Conhece",
+  "ig": "joaoconhece"
+ },
+ {
+  "canal": "CH11",
+  "slug": "mateus",
+  "nome": "Recomenda Mateus",
+  "ig": "recomendamateus"
+ },
+ {
+  "canal": "CH12",
+  "slug": "jorge",
+  "nome": "Jorge Recomenda",
+  "ig": "jorgerecomenda"
+ },
+ {
+  "canal": "CH13",
+  "slug": "luiz",
+  "nome": "Segredos do Luiz",
+  "ig": "segredosdoluiz"
+ },
+ {
+  "canal": "CH14",
+  "slug": "jonas",
+  "nome": "Jonas Recomenda",
+  "ig": "jonasrecomenda"
+ }
+]
