@@ -8,9 +8,9 @@ const APP = 'https://chamaoiago.com.br';
 const API_LINKS = APP + '/api/links';
 
 const FALLBACK = [
-  { rotulo: 'Conheça o IAGO', path: '/' },
-  { rotulo: 'IAGO para Clínicas', path: '/para-clinicas' },
-  { rotulo: 'IAGO para Hotéis', path: '/para-hoteis' },
+  { rotulo: 'Conheça o IAGO', path: '/', imagem: 'https://assets.iagopinkusfeld.org/hero/191.webp' },
+  { rotulo: 'IAGO para Clínicas', path: '/para-clinicas', imagem: "https://assets.iagopinkusfeld.org/Ramos%20LP's/clinicas.webp" },
+  { rotulo: 'IAGO para Hotéis', path: '/para-hoteis', imagem: "https://assets.iagopinkusfeld.org/Ramos%20LP's/hoteis.webp" },
 ];
 
 function esc(valor) {
@@ -170,6 +170,25 @@ body {
   background: #d9d9d9;
 }
 
+.botao-img {
+  padding: 0;
+  overflow: hidden;
+}
+
+.botao-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #1c1c1c;
+}
+
+.botao-img span {
+  display: block;
+  padding: 14px 18px;
+}
+
 .botao-off {
   background: #1c1c1c;
   color: var(--texto-fraco);
@@ -275,9 +294,17 @@ const JS = `(function () {
       var fragmento = document.createDocumentFragment();
       validos.forEach(function (item) {
         var botao = document.createElement('a');
-        botao.className = 'botao';
+        botao.className = item.imagem ? 'botao botao-img' : 'botao';
         botao.setAttribute('href', APP + '/r/' + slug + '?to=' + encodeURIComponent(item.path));
-        botao.textContent = item.rotulo;
+        if (item.imagem) {
+          var foto = document.createElement('img');
+          foto.src = item.imagem; foto.alt = ''; foto.loading = 'lazy'; foto.decoding = 'async';
+          var texto = document.createElement('span');
+          texto.textContent = item.rotulo;
+          botao.appendChild(foto); botao.appendChild(texto);
+        } else {
+          botao.textContent = item.rotulo;
+        }
         fragmento.appendChild(botao);
       });
       lista.textContent = '';
@@ -315,7 +342,9 @@ function paginaAvatar(p) {
   const descricao = `Todos os links de ${p.nome} (@${p.ig}) em um lugar só.`;
   const url = `${SITE}/${p.slug}/`;
   const botoes = FALLBACK.map((item) =>
-    `    <a class="botao" href="${hrefRedirect(p.slug, item.path)}" rel="noopener">${esc(item.rotulo)}</a>`
+    item.imagem
+      ? `    <a class="botao botao-img" href="${hrefRedirect(p.slug, item.path)}" rel="noopener"><img src="${esc(item.imagem)}" alt="" loading="lazy" decoding="async" width="1280" height="720"><span>${esc(item.rotulo)}</span></a>`
+      : `    <a class="botao" href="${hrefRedirect(p.slug, item.path)}" rel="noopener">${esc(item.rotulo)}</a>`
   ).join('\n');
 
   return `${head(titulo, descricao, url, '../')}<body data-slug="${esc(p.slug)}">

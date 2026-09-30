@@ -112,6 +112,25 @@ body {
   background: #d9d9d9;
 }
 
+.botao-img {
+  padding: 0;
+  overflow: hidden;
+}
+
+.botao-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #1c1c1c;
+}
+
+.botao-img span {
+  display: block;
+  padding: 14px 18px;
+}
+
 .botao-off {
   background: #1c1c1c;
   color: var(--texto-fraco);

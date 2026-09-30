@@ -21,9 +21,17 @@
       var fragmento = document.createDocumentFragment();
       validos.forEach(function (item) {
         var botao = document.createElement('a');
-        botao.className = 'botao';
+        botao.className = item.imagem ? 'botao botao-img' : 'botao';
         botao.setAttribute('href', APP + '/r/' + slug + '?to=' + encodeURIComponent(item.path));
-        botao.textContent = item.rotulo;
+        if (item.imagem) {
+          var foto = document.createElement('img');
+          foto.src = item.imagem; foto.alt = ''; foto.loading = 'lazy'; foto.decoding = 'async';
+          var texto = document.createElement('span');
+          texto.textContent = item.rotulo;
+          botao.appendChild(foto); botao.appendChild(texto);
+        } else {
+          botao.textContent = item.rotulo;
+        }
         fragmento.appendChild(botao);
       });
       lista.textContent = '';
