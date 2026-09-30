@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -118,6 +118,14 @@ body {
   font-weight: 700;
   letter-spacing: 1px;
   user-select: none;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .nome {
@@ -350,7 +358,7 @@ function paginaAvatar(p) {
   return `${head(titulo, descricao, url, '../')}<body data-slug="${esc(p.slug)}">
 <main class="pagina">
   <header class="perfil">
-    <div class="avatar" aria-hidden="true">${esc(iniciais(p.nome))}</div>
+    <div class="avatar" aria-hidden="true">${existsSync(join(BASE, 'fotos', p.slug + '.jpg')) ? `<img src="../fotos/${esc(p.slug)}.jpg" alt="" width="92" height="92">` : esc(iniciais(p.nome))}</div>
     <h1 class="nome">${esc(p.nome)}</h1>
     <a class="ig" href="https://instagram.com/${esc(p.ig)}" target="_blank" rel="noopener noreferrer">@${esc(p.ig)}</a>
   </header>
@@ -388,7 +396,7 @@ for (const p of perfis) {
 escrever(join(BASE, 'index.html'), `${head(tituloHome, descricaoHome, urlHome, '')}<body>
 <main class="pagina">
   <header class="perfil">
-    <div class="avatar" aria-hidden="true">IA</div>
+    <div class="avatar" aria-hidden="true">${existsSync(join(BASE, 'fotos', 'chamaoiago.jpg')) ? '<img src="fotos/chamaoiago.jpg" alt="" width="92" height="92">' : 'IA'}</div>
     <h1 class="nome">IAGO</h1>
     <a class="ig" href="https://chamaoiago.com.br" target="_blank" rel="noopener noreferrer">@chamaoiago</a>
   </header>
